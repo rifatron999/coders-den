@@ -1,0 +1,400 @@
+{
+  "meta": {
+    "siteTitle": "Coders Den — We Build Software That Scales",
+    "siteDescription": "Coders Den is a passionate team of engineers building modern web applications, APIs, mobile apps, and digital solutions for businesses worldwide.",
+    "keywords": [
+      "software development",
+      "web development",
+      "API development",
+      "mobile apps",
+      "cloud deployment",
+      "UI/UX design",
+      "IT consulting",
+      "custom software",
+      "Coders Den"
+    ],
+    "favicon": "https://api.iconify.design/mdi/code-braces-box.svg?color=%230EA5E9",
+    "themeColor": "#0EA5E9"
+  },
+
+  "company": {
+    "name": "Coders Den",
+    "tagline": "We Build Software That Scales",
+    "typewriterPhrases": [
+      "Modern Web Applications",
+      "Robust APIs & Backends",
+      "Cross-Platform Mobile Apps",
+      "Cloud-Native Solutions",
+      "Enterprise Software Systems",
+      "Any Software You Can Imagine"
+    ],
+    "description": "A passionate team of engineers building modern web applications, APIs, and digital solutions for businesses worldwide. From startups to enterprises — we turn ideas into production-ready software.",
+    "longDescription": "At Coders Den, we don't just write code — we architect solutions. Whether you need a sleek customer-facing web app, a high-throughput API, a native mobile experience, a complex enterprise system, or anything in between — our team has the expertise to deliver. No project is too big or too small. If it involves software, we can build it.",
+    "logo": "",
+    "email": "hello@codersden.dev",
+    "phone": "+1 (555) 987-6543",
+    "whatsapp": "+15559876543",
+    "address": "42 Innovation Drive, Tech Valley, CA 94025",
+    "social": {
+      "linkedin": "https://linkedin.com/company/codersden",
+      "github": "https://github.com/codersden",
+      "facebook": "https://facebook.com/codersden",
+      "twitter": "https://twitter.com/codersden"
+    }
+  },
+
+  "stats": [
+    { "value": 150, "suffix": "+", "label": "Projects Delivered" },
+    { "value": 80, "suffix": "+", "label": "Happy Clients" },
+    { "value": 7, "suffix": "+", "label": "Years Experience" },
+    { "value": 25, "suffix": "", "label": "Team Members" }
+  ],
+
+  "services": [
+    {
+      "title": "Web Development",
+      "description": "Full-stack web applications built with modern frameworks — React, Vue, Angular, Node.js, Django, Laravel and more. From landing pages to complex SaaS platforms, we deliver pixel-perfect, performant web experiences.",
+      "icon": "fa-solid fa-globe"
+    },
+    {
+      "title": "API Development",
+      "description": "Scalable RESTful and GraphQL APIs engineered for performance. We design robust backend architectures that handle millions of requests with clean documentation and thorough testing.",
+      "icon": "fa-solid fa-plug"
+    },
+    {
+      "title": "Cloud Deployment & DevOps",
+      "description": "End-to-end cloud infrastructure on AWS, Azure, and GCP. CI/CD pipelines, containerization with Docker & Kubernetes, auto-scaling, monitoring, and cost optimization.",
+      "icon": "fa-solid fa-cloud"
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "Human-centered design that converts. Wireframes, prototypes, design systems, and pixel-perfect interfaces crafted in Figma — tested with real users for maximum impact.",
+      "icon": "fa-solid fa-palette"
+    },
+    {
+      "title": "Mobile App Development",
+      "description": "Native and cross-platform mobile applications for iOS and Android using React Native, Flutter, and Swift. Smooth animations, offline support, and App Store optimization.",
+      "icon": "fa-solid fa-mobile-screen-button"
+    },
+    {
+      "title": "IT Consulting & Strategy",
+      "description": "Technology audits, architecture reviews, and digital transformation roadmaps. We help businesses choose the right stack, modernize legacy systems, and scale efficiently.",
+      "icon": "fa-solid fa-lightbulb"
+    },
+    {
+      "title": "Custom Software Solutions",
+      "description": "Bespoke software tailored to your unique business needs — ERP systems, CRM platforms, inventory management, booking engines, dashboards, and any custom tool you can envision.",
+      "icon": "fa-solid fa-wand-magic-sparkles"
+    },
+    {
+      "title": "E-Commerce Solutions",
+      "description": "Complete online stores with payment integration, inventory management, analytics dashboards, and conversion-optimized checkout flows. Shopify, WooCommerce, or fully custom.",
+      "icon": "fa-solid fa-cart-shopping"
+    }
+  ],
+
+  "whyUs": [
+    {
+      "title": "Any Project, Any Scale",
+      "description": "From a simple landing page to a complex enterprise platform — we handle software projects of every type and size. If you can describe it, we can build it.",
+      "icon": "fa-solid fa-infinity"
+    },
+    {
+      "title": "Agile & Transparent",
+      "description": "Weekly sprints, daily standups, and real-time project dashboards. You always know exactly where your project stands — no surprises.",
+      "icon": "fa-solid fa-arrows-spin"
+    },
+    {
+      "title": "Battle-Tested Code",
+      "description": "Automated testing, code reviews, and CI/CD pipelines ensure every release is production-ready. We write code that lasts.",
+      "icon": "fa-solid fa-shield-halved"
+    },
+    {
+      "title": "On-Time Delivery",
+      "description": "We respect deadlines. Our track record speaks for itself — 95%+ on-time delivery rate across hundreds of projects.",
+      "icon": "fa-solid fa-clock"
+    },
+    {
+      "title": "Dedicated Support",
+      "description": "Post-launch maintenance, monitoring, and 24/7 emergency support. We don't disappear after deployment.",
+      "icon": "fa-solid fa-headset"
+    },
+    {
+      "title": "Competitive Pricing",
+      "description": "Enterprise-grade quality at startup-friendly prices. Flexible engagement models — fixed price, hourly, or dedicated teams.",
+      "icon": "fa-solid fa-tags"
+    }
+  ],
+
+  "portfolio": [
+    {
+      "name": "FinTrack Pro",
+      "category": "Web Application",
+      "description": "A real-time financial analytics dashboard processing 2M+ transactions daily with interactive charts, automated reporting, and role-based access control.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      "links": ["https://github.com/codersden/fintrack"],
+      "techStack": ["React", "Node.js", "PostgreSQL", "Redis", "D3.js"]
+    },
+    {
+      "name": "MediConnect",
+      "category": "Mobile App",
+      "description": "HIPAA-compliant telemedicine app connecting 50K+ patients with doctors. Video calls, prescription management, and appointment scheduling.",
+      "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
+      "links": ["https://github.com/codersden/mediconnect"],
+      "techStack": ["React Native", "Firebase", "WebRTC", "Node.js"]
+    },
+    {
+      "name": "ShopStream",
+      "category": "E-Commerce",
+      "description": "High-performance e-commerce platform handling 100K+ SKUs with AI-powered recommendations, real-time inventory sync, and multi-currency support.",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      "links": ["https://github.com/codersden/shopstream"],
+      "techStack": ["Next.js", "Stripe", "MongoDB", "Elasticsearch"]
+    },
+    {
+      "name": "CloudOps Hub",
+      "category": "DevOps Platform",
+      "description": "Infrastructure management dashboard with automated deployments, container orchestration, log aggregation, and cost monitoring across AWS & GCP.",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
+      "links": ["https://github.com/codersden/cloudops"],
+      "techStack": ["Vue.js", "Go", "Docker", "Kubernetes", "Terraform"]
+    },
+    {
+      "name": "EduVerse",
+      "category": "Web Application",
+      "description": "Interactive learning platform with live classrooms, progress tracking, gamified quizzes, and AI-powered study recommendations for 200K+ students.",
+      "image": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop",
+      "links": ["https://github.com/codersden/eduverse"],
+      "techStack": ["Angular", "Python", "Django", "PostgreSQL", "Socket.io"]
+    },
+    {
+      "name": "LogiChain",
+      "category": "Enterprise Software",
+      "description": "End-to-end supply chain management system with real-time GPS tracking, warehouse automation, predictive analytics, and vendor portal.",
+      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
+      "links": ["https://github.com/codersden/logichain"],
+      "techStack": ["React", "Java", "Spring Boot", "Kafka", "MySQL"]
+    }
+  ],
+
+  "team": [
+    {
+      "name": "Alex Morgan",
+      "role": "CEO & Lead Architect",
+      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      "linkedin": "https://linkedin.com/in/alexmorgan",
+      "github": "https://github.com/alexmorgan"
+    },
+    {
+      "name": "Sarah Chen",
+      "role": "CTO & Backend Lead",
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+      "linkedin": "https://linkedin.com/in/sarachen",
+      "github": "https://github.com/sarachen"
+    },
+    {
+      "name": "James Wilson",
+      "role": "Full-Stack Developer",
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+      "linkedin": "https://linkedin.com/in/jameswilson",
+      "github": "https://github.com/jameswilson"
+    },
+    {
+      "name": "Priya Sharma",
+      "role": "UI/UX Design Lead",
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+      "linkedin": "https://linkedin.com/in/priyasharma",
+      "github": "https://github.com/priyasharma"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "name": "David Park",
+      "company": "FinTech Innovations",
+      "role": "CTO",
+      "message": "Coders Den delivered our trading platform 2 weeks ahead of schedule. Their technical depth is outstanding — they solved performance bottlenecks our previous team couldn't crack. Absolutely top-tier.",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Emily Rodriguez",
+      "company": "HealthBridge Inc.",
+      "role": "CEO",
+      "message": "From concept to App Store in 4 months. The team's communication was flawless — weekly demos, quick iterations, and zero scope creep. They truly care about the product, not just the code.",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Michael Chang",
+      "company": "RetailX Global",
+      "role": "VP of Engineering",
+      "message": "We needed to rebuild our entire e-commerce backend under a tight deadline. Coders Den assembled a dedicated team in 48 hours and delivered a system that handles 10x our previous traffic. Remarkable.",
+      "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Lisa Thompson",
+      "company": "EduLearn Co.",
+      "role": "Product Manager",
+      "message": "Working with Coders Den felt like having an in-house team. They understood our vision immediately and suggested improvements we hadn't even considered. The platform they built exceeded every expectation.",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face"
+    }
+  ],
+
+  "process": [
+    {
+      "step": 1,
+      "title": "Discovery & Planning",
+      "description": "We deep-dive into your requirements, business goals, and target audience. Deliverables: project scope document, technical architecture, timeline, and cost estimate."
+    },
+    {
+      "step": 2,
+      "title": "UI/UX Design",
+      "description": "Wireframes, interactive prototypes, and high-fidelity mockups — all validated with your feedback before a single line of code is written."
+    },
+    {
+      "step": 3,
+      "title": "Agile Development",
+      "description": "Two-week sprints with demo at the end of each. You see progress in real time and can adjust priorities on the fly. Continuous integration keeps quality high."
+    },
+    {
+      "step": 4,
+      "title": "Testing & QA",
+      "description": "Automated unit tests, integration tests, performance benchmarks, security audits, and manual QA across devices and browsers."
+    },
+    {
+      "step": 5,
+      "title": "Deployment & Launch",
+      "description": "Zero-downtime deployments to your cloud of choice. DNS, SSL, CDN, monitoring, and alerting — all configured and battle-tested before go-live."
+    },
+    {
+      "step": 6,
+      "title": "Support & Growth",
+      "description": "Post-launch maintenance, performance monitoring, feature enhancements, and scaling support. We grow with you."
+    }
+  ],
+
+  "pricing": [
+    {
+      "plan": "Starter",
+      "price": "1,499",
+      "currency": "$",
+      "period": "project",
+      "description": "Perfect for MVPs, landing pages, and small business websites.",
+      "features": [
+        "Up to 5 pages / screens",
+        "Responsive design",
+        "Basic SEO setup",
+        "Contact form integration",
+        "1 round of revisions",
+        "2 weeks delivery",
+        "30-day post-launch support"
+      ],
+      "highlighted": false
+    },
+    {
+      "plan": "Professional",
+      "price": "4,999",
+      "currency": "$",
+      "period": "project",
+      "description": "For growing businesses that need a robust digital presence.",
+      "features": [
+        "Up to 15 pages / screens",
+        "Custom UI/UX design",
+        "CMS integration",
+        "API development",
+        "Payment integration",
+        "3 rounds of revisions",
+        "6 weeks delivery",
+        "90-day post-launch support"
+      ],
+      "highlighted": true
+    },
+    {
+      "plan": "Enterprise",
+      "price": "Custom",
+      "currency": "",
+      "period": "quote",
+      "description": "For complex platforms, SaaS products, and large-scale systems.",
+      "features": [
+        "Unlimited pages / screens",
+        "Full-stack architecture",
+        "Microservices & APIs",
+        "Cloud infrastructure setup",
+        "CI/CD pipeline",
+        "Dedicated project manager",
+        "Ongoing development",
+        "24/7 priority support"
+      ],
+      "highlighted": false
+    }
+  ],
+
+  "faq": [
+    {
+      "question": "What types of software projects do you handle?",
+      "answer": "We handle every type of software project — web applications, mobile apps, REST/GraphQL APIs, e-commerce platforms, SaaS products, enterprise systems (ERP, CRM), desktop applications, browser extensions, DevOps automation, data pipelines, and more. If it involves software, we can build it. No project is too big or too small."
+    },
+    {
+      "question": "What technologies do you work with?",
+      "answer": "Our team is proficient in a wide range of technologies: JavaScript/TypeScript (React, Vue, Angular, Node.js, Next.js), Python (Django, FastAPI, Flask), Java (Spring Boot), Go, PHP (Laravel), mobile (React Native, Flutter, Swift, Kotlin), databases (PostgreSQL, MongoDB, MySQL, Redis), cloud (AWS, Azure, GCP), and DevOps tools (Docker, Kubernetes, Terraform, GitHub Actions)."
+    },
+    {
+      "question": "How long does a typical project take?",
+      "answer": "Timelines vary by complexity: a marketing website takes 2-4 weeks, a web application 6-12 weeks, and a complex enterprise platform 3-6+ months. We provide a detailed timeline during the discovery phase and commit to it."
+    },
+    {
+      "question": "Do you work with startups?",
+      "answer": "Absolutely! We love working with startups. We offer flexible engagement models including equity-based partnerships for exceptional ideas. Many of our long-term clients started as early-stage startups."
+    },
+    {
+      "question": "What is your development process?",
+      "answer": "We follow Agile/Scrum methodology with 2-week sprints. Each sprint ends with a demo and review. You get access to a project dashboard, daily standups (if desired), and direct Slack/Teams communication with your development team."
+    },
+    {
+      "question": "Do you provide post-launch support?",
+      "answer": "Yes. Every project includes post-launch support (30-90 days depending on the plan). We also offer ongoing maintenance contracts with SLA guarantees, monitoring, and priority bug fixes."
+    },
+    {
+      "question": "Can you work with our existing codebase?",
+      "answer": "Absolutely. We regularly take over, refactor, and extend existing codebases. We start with a thorough code audit and provide recommendations before making any changes."
+    },
+    {
+      "question": "How do you handle project pricing?",
+      "answer": "We offer three engagement models: fixed-price (for well-defined scopes), time & materials (for evolving requirements), and dedicated team (monthly retainer for ongoing work). We always provide a detailed estimate before starting."
+    }
+  ],
+
+  "contact": {
+    "email": "hello@codersden.dev",
+    "phone": "+1 (555) 987-6543",
+    "whatsapp": "+15559876543",
+    "address": "42 Innovation Drive, Tech Valley, CA 94025",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.639290621064!2d-122.0838!3d37.4220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDI1JzE5LjIiTiAxMjLCsDA1JzAxLjciVw!5e0!3m2!1sen!2sus!4v1234567890"
+  },
+
+  "capabilities": {
+    "headline": "We Can Build Any Software Project",
+    "description": "From simple scripts to complex distributed systems — our team has the skills, experience, and passion to turn any software idea into reality. Here's a glimpse of what we build:",
+    "items": [
+      "Single Page Applications (SPA)",
+      "Progressive Web Apps (PWA)",
+      "REST & GraphQL APIs",
+      "Real-time Applications (WebSocket)",
+      "E-Commerce Platforms",
+      "SaaS Products",
+      "Content Management Systems",
+      "Customer Relationship Management (CRM)",
+      "Enterprise Resource Planning (ERP)",
+      "Learning Management Systems (LMS)",
+      "Inventory & Warehouse Management",
+      "Booking & Reservation Systems",
+      "Social Media Platforms",
+      "Chat & Messaging Applications",
+      "Video Conferencing Tools",
+      "Payment & Billing Systems",
+      "Data Dashboards & Analytics",
+      "IoT Device Interfaces",
+      "Browser Extensions",
+      "Automation & Workflow Tools"
+    ]
+  }
+}

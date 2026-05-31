@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coders Den — We Build Software That Scales</title>
+  <meta name="description" content="Coders Den is a passionate team of engineers building modern web applications, APIs, mobile apps, and digital solutions for businesses worldwide.">
+  <meta name="theme-color" content="#0EA5E9">
+  <link rel="icon" type="image/svg+xml" href="https://api.iconify.design/mdi/code-braces-box.svg?color=%230EA5E9">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loader-logo"><span class="accent">&lt;</span>Coders Den<span class="accent">/&gt;</span></div>
+    <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text">Initializing...</div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Vue App Root -->
+  <div id="app" v-cloak>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="nav-overlay" :class="{ open: mobileMenuOpen }" @click="mobileMenuOpen = false"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" :class="{ scrolled: isScrolled }">
+      <a href="#hero" class="nav-brand" @click="mobileMenuOpen = false">
+        <img v-if="company.logo" :src="company.logo" :alt="company.name">
+        <span><span class="accent">&lt;</span>{{ company.name }}<span class="accent">/&gt;</span></span>
+      </a>
+      <div class="nav-links" :class="{ open: mobileMenuOpen }">
+        <a v-for="link in navLinks" :key="link.href" :href="link.href"
+           @click="mobileMenuOpen = false"
+           :class="{ active: activeSection === link.id }">{{ link.label }}</a>
+        <a :href="quoteMailto" class="nav-cta">
+          <i class="fa-solid fa-paper-plane"></i> Get a Quote
+        </a>
+      </div>
+      <button class="hamburger" :class="{ active: mobileMenuOpen }"
+              @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <canvas id="particle-canvas"></canvas>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for new projects
+        </div>
+        <h1>
+          We Build<br>
+          <span class="gradient">Software That Scales</span>
+        </h1>
+        <div class="typewriter-line">
+          <span>{{ typewriterText }}</span>
+          <span class="typewriter-cursor"></span>
+        </div>
+        <p class="desc">{{ company.description }}</p>
+        <div class="hero-buttons">
+          <a :href="quoteMailto" class="btn btn-primary">
+            <i class="fa-solid fa-paper-plane"></i> Get a Quote
+          </a>
+          <a href="#portfolio" class="btn btn-secondary">
+            <i class="fa-solid fa-eye"></i> View Our Work
+          </a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="mouse"></div>
+        Scroll
+      </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <div class="stats-section">
+      <div class="stats-bar">
+        <div class="stat-item reveal reveal-up" v-for="(stat, i) in stats" :key="i"
+             :class="'reveal-delay-' + (i + 1)">
+          <div class="stat-value">
+            <span :data-target="stat.value" class="count-up">0</span>{{ stat.suffix }}
+          </div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">What We Do</span>
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-subtitle">End-to-end software solutions — from concept to deployment and beyond.</p>
+        </div>
+        <div class="services-grid">
+          <div v-for="(s, i) in services" :key="i"
+               class="glass-card service-card tilt-card reveal reveal-up"
+               :class="'reveal-delay-' + ((i % 4) + 1)">
+            <div class="service-icon"><i :class="s.icon"></i></div>
+            <h3>{{ s.title }}</h3>
+            <p>{{ s.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CAPABILITIES ==================== -->
+    <section class="section" id="capabilities" v-if="capabilities">
+      <div class="container capabilities-section">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Our Expertise</span>
+          <h2 class="section-title">{{ capabilities.headline }}</h2>
+          <p class="section-subtitle">{{ capabilities.description }}</p>
+        </div>
+        <div class="capabilities-grid reveal reveal-scale reveal-delay-2">
+          <span v-for="(item, i) in capabilities.items" :key="i" class="cap-chip">{{ item }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY US ==================== -->
+    <section class="section section-alt" id="why-us">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Why Coders Den</span>
+          <h2 class="section-title">Why Choose Us</h2>
+          <p class="section-subtitle">What sets us apart from the rest.</p>
+        </div>
+        <div class="why-grid">
+          <div v-for="(w, i) in whyUs" :key="i"
+               class="glass-card why-card reveal reveal-left"
+               :class="'reveal-delay-' + ((i % 3) + 1)">
+            <div class="why-icon"><i :class="w.icon"></i></div>
+            <div>
+              <h3>{{ w.title }}</h3>
+              <p>{{ w.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PORTFOLIO ==================== -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Our Work</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">A selection of projects we're proud of.</p>
+        </div>
+        <div class="portfolio-filters reveal reveal-up reveal-delay-1">
+          <button class="filter-btn" :class="{ active: activeFilter === 'All' }"
+                  @click="activeFilter = 'All'">All</button>
+          <button v-for="cat in portfolioCategories" :key="cat"
+                  class="filter-btn" :class="{ active: activeFilter === cat }"
+                  @click="activeFilter = cat">{{ cat }}</button>
+        </div>
+        <div class="portfolio-grid">
+          <div v-for="(p, i) in filteredPortfolio" :key="p.name"
+               class="glass-card project-card tilt-card reveal reveal-rotate"
+               :class="'reveal-delay-' + ((i % 3) + 1)">
+            <div class="img-wrapper">
+              <img :src="p.image" :alt="p.name" class="project-img" loading="lazy">
+              <span class="project-category">{{ p.category }}</span>
+            </div>
+            <div class="project-body">
+              <h3>{{ p.name }}</h3>
+              <p class="project-desc">{{ p.description }}</p>
+              <div class="tech-stack">
+                <span v-for="t in p.techStack" :key="t" class="tech-tag">{{ t }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROCESS ==================== -->
+    <section class="section section-alt" id="process">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">How We Work</span>
+          <h2 class="section-title">Our Process</h2>
+          <p class="section-subtitle">A battle-tested methodology that delivers results.</p>
+        </div>
+        <div class="process-timeline">
+          <div v-for="(step, i) in processSteps" :key="i"
+               class="process-step reveal reveal-left"
+               :class="'reveal-delay-' + ((i % 3) + 1)">
+            <div class="step-number">{{ step.step }}</div>
+            <div class="step-content">
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEAM ==================== -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Our People</span>
+          <h2 class="section-title">Meet the Team</h2>
+          <p class="section-subtitle">The talented engineers and designers behind Coders Den.</p>
+        </div>
+        <div class="team-grid">
+          <div v-for="(m, i) in team" :key="i"
+               class="glass-card team-card tilt-card reveal reveal-scale"
+               :class="'reveal-delay-' + ((i % 4) + 1)">
+            <div class="team-photo-wrapper">
+              <img :src="m.photo" :alt="m.name" class="team-photo" loading="lazy">
+            </div>
+            <h3>{{ m.name }}</h3>
+            <div class="team-role">{{ m.role }}</div>
+            <div class="team-socials">
+              <a v-if="m.linkedin" :href="m.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a v-if="m.github" :href="m.github" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section section-alt" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">What Clients Say</span>
+          <h2 class="section-title">Testimonials</h2>
+          <p class="section-subtitle">Don't take our word for it — hear from our clients.</p>
+        </div>
+        <div class="testimonials-track">
+          <div v-for="(t, i) in testimonials" :key="i"
+               class="glass-card testimonial-card reveal reveal-right"
+               :class="'reveal-delay-' + ((i % 3) + 1)">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-msg">{{ t.message }}</p>
+            <div class="testimonial-author">
+              <img :src="t.avatar" :alt="t.name" loading="lazy">
+              <div class="author-info">
+                <h4>{{ t.name }}</h4>
+                <p>{{ t.role }}, {{ t.company }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRICING ==================== -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Investment</span>
+          <h2 class="section-title">Pricing Plans</h2>
+          <p class="section-subtitle">Transparent pricing — no hidden fees, no surprises.</p>
+        </div>
+        <div class="pricing-grid">
+          <div v-for="(plan, i) in pricing" :key="i"
+               class="glass-card pricing-card reveal reveal-up"
+               :class="[{ highlighted: plan.highlighted }, 'reveal-delay-' + (i + 1)]">
+            <div v-if="plan.highlighted" class="popular-badge">Most Popular</div>
+            <div class="plan-icon">
+              <i :class="i === 0 ? 'fa-solid fa-rocket' : i === 1 ? 'fa-solid fa-building' : 'fa-solid fa-city'"></i>
+            </div>
+            <div class="plan-name">{{ plan.plan }}</div>
+            <div class="plan-price">
+              <span class="currency">{{ plan.currency }}</span>{{ plan.price }}
+            </div>
+            <div class="plan-period">per {{ plan.period }}</div>
+            <p class="plan-desc">{{ plan.description }}</p>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li v-for="f in plan.features" :key="f">
+                <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                {{ f }}
+              </li>
+            </ul>
+            <a :href="quoteMailto" class="btn"
+               :class="plan.highlighted ? 'btn-primary' : 'btn-secondary'">
+              {{ plan.price === 'Custom' ? 'Contact Us' : 'Get Started' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Questions</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Got questions? We've got answers.</p>
+        </div>
+        <div class="faq-list">
+          <div v-for="(item, i) in faq" :key="i"
+               class="faq-item reveal reveal-up"
+               :class="{ open: openFaq === i, ['reveal-delay-' + ((i % 4) + 1)]: true }">
+            <button class="faq-question" @click="openFaq = openFaq === i ? null : i">
+              <span>{{ item.question }}</span>
+              <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>{{ item.answer }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header reveal reveal-up">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Contact Us</h2>
+          <p class="section-subtitle">Ready to start your project? Let's talk.</p>
+        </div>
+        <div class="contact-wrapper">
+          <div class="contact-left reveal reveal-left">
+            <h3>Let's build something <span class="text-accent">amazing</span> together.</h3>
+            <p>Whether you have a detailed spec or just a rough idea — we're here to help you figure it out and bring it to life.</p>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <p><a :href="'mailto:' + contact.email">{{ contact.email }}</a></p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <h4>Phone</h4>
+                <p><a :href="'tel:' + contact.phone">{{ contact.phone }}</a></p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <h4>WhatsApp</h4>
+                <p><a :href="whatsappLink" target="_blank" rel="noopener">Chat on WhatsApp</a></p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <h4>Address</h4>
+                <p>{{ contact.address }}</p>
+              </div>
+            </div>
+            <div class="contact-map" v-if="contact.mapEmbed">
+              <iframe :src="contact.mapEmbed" allowfullscreen loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade" title="Office Location"></iframe>
+            </div>
+          </div>
+          <form class="contact-form glass-card reveal reveal-right reveal-delay-2" @submit.prevent="submitContact">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-name">Full Name</label>
+                <input id="cf-name" type="text" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email</label>
+                <input id="cf-email" type="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-subject">Subject</label>
+              <input id="cf-subject" type="text" placeholder="Project Inquiry">
+            </div>
+            <div class="form-group">
+              <label for="cf-budget">Budget Range</label>
+              <select id="cf-budget">
+                <option value="">Select budget range</option>
+                <option>Under $1,000</option>
+                <option>$1,000 – $5,000</option>
+                <option>$5,000 – $15,000</option>
+                <option>$15,000 – $50,000</option>
+                <option>$50,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" placeholder="Tell us about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-brand">
+            <span><span class="accent">&lt;</span>{{ company.name }}<span class="accent">/&gt;</span></span>
+          </a>
+          <p>{{ company.description }}</p>
+          <div class="footer-social">
+            <a v-if="company.social?.linkedin" :href="company.social.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a v-if="company.social?.github" :href="company.social.github" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a v-if="company.social?.facebook" :href="company.social.facebook" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a v-if="company.social?.twitter" :href="company.social.twitter" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li v-for="link in navLinks" :key="link.href"><a :href="link.href">{{ link.label }}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li v-for="s in services.slice(0, 6)" :key="s.title"><a href="#services">{{ s.title }}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a :href="'mailto:' + contact.email"><i class="fa-solid fa-envelope" style="font-size:0.75rem; opacity:0.6;"></i> {{ contact.email }}</a></li>
+            <li><a :href="'tel:' + contact.phone"><i class="fa-solid fa-phone" style="font-size:0.75rem; opacity:0.6;"></i> {{ contact.phone }}</a></li>
+            <li style="color:var(--text-muted); font-size:0.88rem;"><i class="fa-solid fa-location-dot" style="font-size:0.75rem; opacity:0.6; margin-right:6px;"></i>{{ contact.address }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; {{ currentYear }} {{ company.name }}. All rights reserved. Built with <span class="text-accent">&lt;/&gt;</span> and ☕
+      </div>
+    </footer>
+
+    <!-- FAB Buttons -->
+    <div class="fab-container">
+      <a :href="whatsappLink" target="_blank" rel="noopener"
+         class="fab fab-whatsapp" aria-label="Chat on WhatsApp">
+        <span class="fab-tooltip">Chat on WhatsApp</span>
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a :href="'mailto:' + contact.email"
+         class="fab fab-email" aria-label="Send Email">
+        <span class="fab-tooltip">Send us an Email</span>
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" :class="{ visible: showBackToTop }"
+            @click="scrollToTop" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+  </div><!-- /app -->
+
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- App -->
+  <script src="script.js"></script>
+
+</body>
+</html>
