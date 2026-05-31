@@ -1,6 +1,6 @@
 /* ============================================================
-   CODERS DEN — SCRIPT.JS v2.0
-   Vue 3 app · Premium animations · Mouse-tracking glow
+   CODERS DEN — SCRIPT.JS v5.0
+   Vue 3 app · Professional + Tiger Accent + Shooter FX
    ============================================================ */
 
 const { createApp, ref, computed, onMounted, onUnmounted, nextTick, watch } = Vue;
@@ -38,7 +38,6 @@ createApp({
       { href: '#portfolio',    id: 'portfolio',    label: 'Portfolio' },
       { href: '#process',      id: 'process',      label: 'Process' },
       { href: '#team',         id: 'team',         label: 'Team' },
-      { href: '#pricing',      id: 'pricing',      label: 'Pricing' },
       { href: '#testimonials', id: 'testimonials', label: 'Testimonials' },
       { href: '#contact',      id: 'contact',      label: 'Contact' },
     ];
@@ -106,6 +105,8 @@ createApp({
             initCountUp();
             initTiltCards();
             initCardGlow();
+            initShooterEffects();
+            initBulletRain();
           }, 100);
         }, 600);
 
@@ -121,14 +122,12 @@ createApp({
     function applyMeta(m) {
       if (!m) return;
       if (m.siteTitle) document.title = m.siteTitle;
-      if (m.themeColor) {
-        document.documentElement.style.setProperty('--accent', m.themeColor);
-        const hex = m.themeColor.replace('#', '');
-        const r = parseInt(hex.substring(0, 2), 16);
-        const g = parseInt(hex.substring(2, 4), 16);
-        const b = parseInt(hex.substring(4, 6), 16);
-        document.documentElement.style.setProperty('--accent-rgb', `${r}, ${g}, ${b}`);
-      }
+      // Tiger's Den dark theme colors
+      document.documentElement.style.setProperty('--accent', '#D97706');
+      document.documentElement.style.setProperty('--accent-rgb', '217, 119, 6');
+      // Update theme-color meta for mobile (dark background)
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) themeMeta.setAttribute('content', '#0A0A0B');
       if (m.favicon) {
         const link = document.querySelector("link[rel*='icon']");
         if (link) link.href = m.favicon;
@@ -137,6 +136,8 @@ createApp({
         const desc = document.querySelector('meta[name="description"]');
         if (desc) desc.setAttribute('content', m.siteDescription);
       }
+      // Init tiger eyes tracking
+      initTigerEyes();
     }
 
     // ── Typewriter Effect ──
@@ -199,7 +200,7 @@ createApp({
       });
 
       const style = getComputedStyle(document.documentElement);
-      const rgb = style.getPropertyValue('--accent-rgb').trim() || '14, 165, 233';
+      const rgb = style.getPropertyValue('--accent-rgb').trim() || '217, 119, 6';
 
       for (let i = 0; i < count; i++) {
         particles.push({
@@ -390,6 +391,248 @@ createApp({
       });
     }
 
+    // ── FAQ Toggle (JS-driven height for smooth close) ──
+    const faqRefs = {};
+    function setFaqRef(el, i) { if (el) faqRefs[i] = el; }
+    function toggleFaq(i) {
+      const prev = openFaq.value;
+      if (prev !== null && faqRefs[prev]) {
+        const el = faqRefs[prev];
+        el.style.maxHeight = el.scrollHeight + 'px';
+        requestAnimationFrame(() => { el.style.maxHeight = '0px'; });
+      }
+      if (prev === i) { openFaq.value = null; return; }
+      openFaq.value = i;
+      nextTick(() => {
+        const el = faqRefs[i];
+        if (el) {
+          el.style.maxHeight = el.scrollHeight + 'px';
+          const onEnd = () => { el.style.maxHeight = 'none'; el.removeEventListener('transitionend', onEnd); };
+          el.addEventListener('transitionend', onEnd);
+        }
+      });
+    }
+
+    // ── Tiger Eyes Tracking (eyes follow cursor) ──
+    function initTigerEyes() {
+      const eyesContainer = document.getElementById('tiger-eyes');
+      if (!eyesContainer) return;
+      const eyes = eyesContainer.querySelectorAll('.tiger-eye');
+      document.addEventListener('mousemove', (e) => {
+        eyes.forEach(eye => {
+          const rect = eye.getBoundingClientRect();
+          const eyeCenterX = rect.left + rect.width / 2;
+          const eyeCenterY = rect.top + rect.height / 2;
+          const dx = e.clientX - eyeCenterX;
+          const dy = e.clientY - eyeCenterY;
+          const angle = Math.atan2(dy, dx);
+          const maxMove = 4;
+          const moveX = Math.cos(angle) * maxMove;
+          const moveY = Math.sin(angle) * maxMove;
+          eye.style.setProperty('--pupil-x', moveX + 'px');
+          eye.style.setProperty('--pupil-y', moveY + 'px');
+        });
+      });
+
+      // Occasional blink
+      setInterval(() => {
+        eyes.forEach(eye => {
+          eye.classList.add('blinking');
+          setTimeout(() => eye.classList.remove('blinking'), 200);
+        });
+      }, 4000 + Math.random() * 3000);
+    }
+
+    // ── Global Shooter Effects (inject into ALL glass-cards) ──
+    function initShooterEffects() {
+      document.querySelectorAll('.glass-card').forEach(card => {
+        // Skip if already initialized
+        if (card.dataset.shooterInit) return;
+        card.dataset.shooterInit = 'true';
+
+        // Inject targeting brackets overlay
+        if (!card.querySelector('.brackets-overlay')) {
+          const brackets = document.createElement('div');
+          brackets.className = 'brackets-overlay';
+          card.appendChild(brackets);
+        }
+
+        // Inject scanline overlay
+        if (!card.querySelector('.scanline-overlay')) {
+          const scanline = document.createElement('div');
+          scanline.className = 'scanline-overlay';
+          card.appendChild(scanline);
+        }
+
+        // Inject bullet container
+        if (!card.querySelector('.bullet-container')) {
+          const bullets = document.createElement('div');
+          bullets.className = 'bullet-container';
+          card.appendChild(bullets);
+        }
+
+        // Spawn bullets on hover for ALL cards
+        card.addEventListener('mouseenter', spawnBullets);
+      });
+    }
+
+    // ── Shooting Game Effect (bullets + muzzle flash) ──
+    function spawnBullets(e) {
+      const card = e.currentTarget;
+      const container = card.querySelector('.bullet-container');
+      if (!container) return;
+      // Muzzle flash
+      const flash = document.createElement('div');
+      flash.className = 'muzzle-flash';
+      card.appendChild(flash);
+      flash.addEventListener('animationend', () => flash.remove());
+      // Bullets
+      for (let b = 0; b < 6; b++) {
+        const bullet = document.createElement('span');
+        bullet.className = 'bullet';
+        bullet.style.left = Math.random() * 100 + '%';
+        bullet.style.top = Math.random() * 100 + '%';
+        bullet.style.animationDelay = (b * 0.07) + 's';
+        container.appendChild(bullet);
+        bullet.addEventListener('animationend', () => bullet.remove());
+      }
+    }
+
+    // ── Global Bullet Rain (ambient 2D shooter across entire page) ──
+    let bulletRainAnim = null;
+    function initBulletRain() {
+      const canvas = document.getElementById('bullet-rain-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const bullets = [];
+      const sparks = [];
+      const MAX_BULLETS = 18;
+      const SPAWN_RATE = 0.03; // per frame chance
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function spawnBullet() {
+        const type = Math.random();
+        if (type < 0.6) {
+          // Tracer — falls down with slight angle
+          const angle = (Math.random() - 0.5) * 0.4 + Math.PI / 2;
+          bullets.push({
+            x: Math.random() * canvas.width,
+            y: -20,
+            vx: Math.cos(angle) * (2 + Math.random() * 2),
+            vy: Math.sin(angle) * (3 + Math.random() * 3),
+            length: 15 + Math.random() * 25,
+            alpha: 0.12 + Math.random() * 0.15,
+            life: 1,
+            decay: 0.002 + Math.random() * 0.002,
+            color: Math.random() > 0.5 ? '217,119,6' : '180,83,9', // amber / deep amber
+            width: 1 + Math.random() * 1.5,
+          });
+        } else if (type < 0.85) {
+          // Horizontal tracer — crosses screen
+          const fromLeft = Math.random() > 0.5;
+          bullets.push({
+            x: fromLeft ? -20 : canvas.width + 20,
+            y: 80 + Math.random() * (canvas.height - 160),
+            vx: (fromLeft ? 1 : -1) * (4 + Math.random() * 4),
+            vy: (Math.random() - 0.5) * 0.5,
+            length: 20 + Math.random() * 35,
+            alpha: 0.08 + Math.random() * 0.1,
+            life: 1,
+            decay: 0.001 + Math.random() * 0.002,
+            color: '217,119,6',
+            width: 1 + Math.random(),
+          });
+        } else {
+          // Spark burst — small fading dot
+          bullets.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5,
+            length: 0,
+            alpha: 0.25 + Math.random() * 0.2,
+            life: 1,
+            decay: 0.015 + Math.random() * 0.01,
+            color: '251,191,36', // gold
+            width: 2 + Math.random() * 2,
+            isSpark: true,
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Spawn new
+        if (bullets.length < MAX_BULLETS && Math.random() < SPAWN_RATE) {
+          spawnBullet();
+        }
+
+        for (let i = bullets.length - 1; i >= 0; i--) {
+          const b = bullets[i];
+          b.x += b.vx;
+          b.y += b.vy;
+          b.life -= b.decay;
+
+          const a = b.alpha * b.life;
+
+          if (b.isSpark) {
+            // Draw spark as glowing dot
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.width, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${b.color}, ${a})`;
+            ctx.fill();
+            // Glow
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.width * 3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${b.color}, ${a * 0.2})`;
+            ctx.fill();
+          } else {
+            // Draw tracer line with glow
+            const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
+            const nx = b.vx / speed;
+            const ny = b.vy / speed;
+            const tailX = b.x - nx * b.length;
+            const tailY = b.y - ny * b.length;
+
+            // Glow trail
+            const gradient = ctx.createLinearGradient(tailX, tailY, b.x, b.y);
+            gradient.addColorStop(0, `rgba(${b.color}, 0)`);
+            gradient.addColorStop(1, `rgba(${b.color}, ${a})`);
+
+            ctx.beginPath();
+            ctx.moveTo(tailX, tailY);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = b.width;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // Bright head
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.width * 1.5, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${b.color}, ${a * 0.6})`;
+            ctx.fill();
+          }
+
+          // Remove dead or off-screen
+          if (b.life <= 0 || b.x < -50 || b.x > canvas.width + 50 ||
+              b.y < -50 || b.y > canvas.height + 50) {
+            bullets.splice(i, 1);
+          }
+        }
+
+        bulletRainAnim = requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
     // ── Contact Form ──
     function submitContact(e) {
       const form = e.target;
@@ -413,6 +656,7 @@ createApp({
       window.removeEventListener('scroll', handleScroll);
       if (twTimeout) clearTimeout(twTimeout);
       if (particleAnim) cancelAnimationFrame(particleAnim);
+      if (bulletRainAnim) cancelAnimationFrame(bulletRainAnim);
       if (revealObserver) revealObserver.disconnect();
     });
 
@@ -421,6 +665,7 @@ createApp({
       await nextTick();
       initTiltCards();
       initCardGlow();
+      initShooterEffects();
       // Re-observe new cards that might have appeared
       document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
         if (revealObserver) revealObserver.observe(el);
@@ -434,6 +679,7 @@ createApp({
       activeFilter, openFaq, typewriterText, currentYear,
       quoteMailto, whatsappLink, portfolioCategories, filteredPortfolio,
       navLinks, scrollToTop, submitContact,
+      toggleFaq, setFaqRef, spawnBullets,
     };
   }
 }).mount('#app');

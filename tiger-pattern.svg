@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!--
+    Tiger's Den Pattern — Golden/amber stripes on dark background.
+    Flowing organic stripes at subtle opacity for readable UI.
+    Colors: amber #D97706 and gold #FBBF24 at low opacity.
+  -->
+
+  <!-- ═══ Primary flowing stripes (the recognizable tiger curves) ═══ -->
+  <path d="M-5,-8 C8,35 -6,80 12,125 C30,170 2,215 20,260 C38,305 5,350 25,400 C38,420 15,410 28,410"
+        fill="none" stroke="#D97706" stroke-width="8" opacity="0.07" stroke-linecap="round"/>
+
+  <path d="M75,-8 C60,40 82,90 62,140 C42,190 78,235 58,285 C38,335 70,380 52,410"
+        fill="none" stroke="#FBBF24" stroke-width="7" opacity="0.055" stroke-linecap="round"/>
+
+  <path d="M155,-8 C168,42 142,92 160,142 C178,192 145,242 165,292 C185,342 150,390 172,410"
+        fill="none" stroke="#D97706" stroke-width="8" opacity="0.065" stroke-linecap="round"/>
+
+  <path d="M230,-8 C218,45 240,95 222,148 C204,200 235,250 215,302 C195,354 228,395 210,410"
+        fill="none" stroke="#B45309" stroke-width="6" opacity="0.06" stroke-linecap="round"/>
+
+  <path d="M310,-8 C325,38 298,88 318,138 C338,188 302,240 325,290 C348,340 308,388 332,410"
+        fill="none" stroke="#FBBF24" stroke-width="7" opacity="0.06" stroke-linecap="round"/>
+
+  <path d="M385,-8 C372,42 395,92 375,145 C355,198 388,248 368,300 C348,352 382,395 362,410"
+        fill="none" stroke="#D97706" stroke-width="6" opacity="0.055" stroke-linecap="round"/>
+
+  <!-- ═══ Diagonal flow stripes (fur direction) ═══ -->
+  <path d="M-8,30 C25,48 50,70 85,100 C120,130 95,168 140,200 C185,232 162,268 210,302"
+        fill="none" stroke="#D97706" stroke-width="5" opacity="0.05" stroke-linecap="round"/>
+
+  <path d="M-8,200 C30,218 55,240 92,268 C130,296 108,330 155,360 C200,388 180,405 225,410"
+        fill="none" stroke="#FBBF24" stroke-width="4" opacity="0.04" stroke-linecap="round"/>
+
+  <path d="M180,-8 C210,18 230,42 262,72 C295,102 272,142 312,175 C352,208 330,248 375,282 C410,308 395,340 410,365"
+        fill="none" stroke="#B45309" stroke-width="5" opacity="0.045" stroke-linecap="round"/>
+
+  <path d="M330,-8 C355,18 375,42 400,72"
+        fill="none" stroke="#D97706" stroke-width="4" opacity="0.04" stroke-linecap="round"/>
+
+  <!-- Reverse diagonal -->
+  <path d="M410,90 C380,108 358,130 328,158 C298,186 318,218 285,248 C252,278 275,310 240,342"
+        fill="none" stroke="#FBBF24" stroke-width="4" opacity="0.04" stroke-linecap="round"/>
+
+  <path d="M410,310 C385,325 368,342 340,362 C312,382 328,398 300,410"
+        fill="none" stroke="#D97706" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+
+  <!-- ═══ Secondary fill stripes ═══ -->
+  <path d="M35,-8 C28,30 42,72 32,115 C22,158 38,200 28,242 C18,285 35,328 25,370 C18,400 30,410 22,410"
+        fill="none" stroke="#D97706" stroke-width="3" opacity="0.045" stroke-linecap="round"/>
+
+  <path d="M115,-8 C122,35 108,78 118,122 C128,165 112,208 122,252 C132,295 116,338 126,380 C132,405 120,410 128,410"
+        fill="none" stroke="#FBBF24" stroke-width="3" opacity="0.04" stroke-linecap="round"/>
+
+  <path d="M195,-8 C188,38 202,82 192,128 C182,172 198,218 188,262 C178,308 195,352 185,395 C178,410 190,410 182,410"
+        fill="none" stroke="#B45309" stroke-width="3" opacity="0.045" stroke-linecap="round"/>
+
+  <path d="M270,-8 C278,35 262,80 272,125 C282,170 266,215 276,260 C286,305 270,350 280,395 C286,410 274,410 282,410"
+        fill="none" stroke="#D97706" stroke-width="3" opacity="0.04" stroke-linecap="round"/>
+
+  <path d="M350,-8 C342,35 358,78 348,122 C338,165 355,210 345,255 C335,300 352,345 342,390 C335,410 348,410 340,410"
+        fill="none" stroke="#FBBF24" stroke-width="3" opacity="0.045" stroke-linecap="round"/>
+
+  <!-- ═══ Wispy fine fur texture ═══ -->
+  <path d="M18,-8 C20,42 15,95 19,148 C23,200 16,252 20,305 C24,358 17,400 21,410"
+        fill="none" stroke="#D97706" stroke-width="1.5" opacity="0.035" stroke-linecap="round"/>
+
+  <path d="M98,-8 C95,38 102,88 96,138 C90,188 100,238 94,288 C88,338 98,388 92,410"
+        fill="none" stroke="#FBBF24" stroke-width="1.5" opacity="0.03" stroke-linecap="round"/>
+
+  <path d="M175,-8 C178,35 172,85 176,135 C180,185 173,235 177,285 C181,335 174,385 178,410"
+        fill="none" stroke="#D97706" stroke-width="1.5" opacity="0.035" stroke-linecap="round"/>
+
+  <path d="M255,-8 C252,40 258,90 254,140 C250,190 256,240 252,290 C248,340 255,390 251,410"
+        fill="none" stroke="#B45309" stroke-width="1.5" opacity="0.03" stroke-linecap="round"/>
+
+  <path d="M335,-8 C338,32 332,82 336,132 C340,182 333,232 337,282 C341,332 334,382 338,410"
+        fill="none" stroke="#FBBF24" stroke-width="1.5" opacity="0.035" stroke-linecap="round"/>
+
+  <!-- ═══ Short fur wisps ═══ -->
+  <path d="M-8,18 C15,25 32,38 55,55" fill="none" stroke="#D97706" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+  <path d="M-8,260 C18,268 35,280 58,298" fill="none" stroke="#FBBF24" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+  <path d="M210,-8 C220,10 232,25 248,42" fill="none" stroke="#D97706" stroke-width="2.5" opacity="0.03" stroke-linecap="round"/>
+  <path d="M160,210 C175,220 190,232 210,248" fill="none" stroke="#B45309" stroke-width="2.5" opacity="0.03" stroke-linecap="round"/>
+  <path d="M340,180 C355,190 370,205 390,222" fill="none" stroke="#FBBF24" stroke-width="2.5" opacity="0.03" stroke-linecap="round"/>
+  <path d="M100,380 C115,390 130,402 150,410" fill="none" stroke="#D97706" stroke-width="2.5" opacity="0.03" stroke-linecap="round"/>
+  <path d="M300,350 C318,360 335,375 355,392" fill="none" stroke="#FBBF24" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+
+  <!-- ═══ Fork details ═══ -->
+  <path d="M160,142 C172,158 185,175 202,195 C218,215 230,232 248,255"
+        fill="none" stroke="#D97706" stroke-width="3.5" opacity="0.04" stroke-linecap="round"/>
+  <path d="M318,138 C305,158 290,178 272,202 C255,225 242,248 225,275"
+        fill="none" stroke="#B45309" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+  <path d="M20,260 C35,270 50,285 68,305 C85,325 98,345 118,368"
+        fill="none" stroke="#FBBF24" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+  <path d="M375,145 C388,162 398,180 410,202"
+        fill="none" stroke="#D97706" stroke-width="3" opacity="0.035" stroke-linecap="round"/>
+</svg>

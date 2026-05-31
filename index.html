@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coders Den — We Build Software That Scales</title>
   <meta name="description" content="Coders Den is a passionate team of engineers building modern web applications, APIs, mobile apps, and digital solutions for businesses worldwide.">
-  <meta name="theme-color" content="#0EA5E9">
-  <link rel="icon" type="image/svg+xml" href="https://api.iconify.design/mdi/code-braces-box.svg?color=%230EA5E9">
+  <meta name="theme-color" content="#0A0A0B">
+  <link rel="icon" type="image/svg+xml" href="https://api.iconify.design/mdi/code-braces-box.svg?color=%23FBBF24">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,11 +25,14 @@
   <div class="loading-screen" id="loading-screen">
     <div class="loader-logo"><span class="accent">&lt;</span>Coders Den<span class="accent">/&gt;</span></div>
     <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
-    <div class="loader-text">Initializing...</div>
+    <div class="loader-text">// Initializing systems...</div>
   </div>
 
   <!-- Scroll Progress -->
   <div id="scroll-progress"></div>
+
+  <!-- Global Bullet Rain Canvas -->
+  <canvas id="bullet-rain-canvas"></canvas>
 
   <!-- Vue App Root -->
   <div id="app" v-cloak>
@@ -62,11 +65,16 @@
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
       <div class="hero-orb hero-orb-3"></div>
+      <!-- Tiger Eyes Animation -->
+      <div class="tiger-eyes" id="tiger-eyes">
+        <div class="tiger-eye tiger-eye-left"></div>
+        <div class="tiger-eye tiger-eye-right"></div>
+      </div>
       <canvas id="particle-canvas"></canvas>
       <div class="hero-content">
         <div class="hero-badge">
           <span class="dot"></span>
-          Available for new projects
+          <i class="fa-solid fa-paw" style="font-size:0.7rem"></i> Ready to Strike
         </div>
         <h1>
           We Build<br>
@@ -178,11 +186,19 @@
         </div>
         <div class="portfolio-grid">
           <div v-for="(p, i) in filteredPortfolio" :key="p.name"
-               class="glass-card project-card tilt-card reveal reveal-rotate"
-               :class="'reveal-delay-' + ((i % 3) + 1)">
+               class="glass-card project-card shooter-card tilt-card reveal reveal-rotate"
+               :class="'reveal-delay-' + ((i % 3) + 1)"
+               @mouseenter="spawnBullets($event)">
+            <div class="tiger-stripe-top"></div>
+            <div class="scanline-overlay"></div>
             <div class="img-wrapper">
               <img :src="p.image" :alt="p.name" class="project-img" loading="lazy">
-              <span class="project-category">{{ p.category }}</span>
+              <span class="project-category"><i class="fa-solid fa-crosshairs"></i> {{ p.category }}</span>
+              <div class="shooter-hud">
+                <span class="hud-score"><i class="fa-solid fa-crosshairs"></i> TARGET</span>
+                <span class="hud-hp">HP ████████</span>
+                <span class="hud-level">LVL {{ i + 1 }}</span>
+              </div>
             </div>
             <div class="project-body">
               <h3>{{ p.name }}</h3>
@@ -191,6 +207,8 @@
                 <span v-for="t in p.techStack" :key="t" class="tech-tag">{{ t }}</span>
               </div>
             </div>
+            <!-- Bullet trails container -->
+            <div class="bullet-container"></div>
           </div>
         </div>
       </div>
@@ -280,43 +298,7 @@
       </div>
     </section>
 
-    <!-- ==================== PRICING ==================== -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-header reveal reveal-up">
-          <span class="section-label">Investment</span>
-          <h2 class="section-title">Pricing Plans</h2>
-          <p class="section-subtitle">Transparent pricing — no hidden fees, no surprises.</p>
-        </div>
-        <div class="pricing-grid">
-          <div v-for="(plan, i) in pricing" :key="i"
-               class="glass-card pricing-card reveal reveal-up"
-               :class="[{ highlighted: plan.highlighted }, 'reveal-delay-' + (i + 1)]">
-            <div v-if="plan.highlighted" class="popular-badge">Most Popular</div>
-            <div class="plan-icon">
-              <i :class="i === 0 ? 'fa-solid fa-rocket' : i === 1 ? 'fa-solid fa-building' : 'fa-solid fa-city'"></i>
-            </div>
-            <div class="plan-name">{{ plan.plan }}</div>
-            <div class="plan-price">
-              <span class="currency">{{ plan.currency }}</span>{{ plan.price }}
-            </div>
-            <div class="plan-period">per {{ plan.period }}</div>
-            <p class="plan-desc">{{ plan.description }}</p>
-            <div class="plan-divider"></div>
-            <ul class="plan-features">
-              <li v-for="f in plan.features" :key="f">
-                <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                {{ f }}
-              </li>
-            </ul>
-            <a :href="quoteMailto" class="btn"
-               :class="plan.highlighted ? 'btn-primary' : 'btn-secondary'">
-              {{ plan.price === 'Custom' ? 'Contact Us' : 'Get Started' }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- ==================== FAQ ==================== -->
     <section class="section section-alt" id="faq">
@@ -330,11 +312,11 @@
           <div v-for="(item, i) in faq" :key="i"
                class="faq-item reveal reveal-up"
                :class="{ open: openFaq === i, ['reveal-delay-' + ((i % 4) + 1)]: true }">
-            <button class="faq-question" @click="openFaq = openFaq === i ? null : i">
+            <button class="faq-question" @click="toggleFaq(i)">
               <span>{{ item.question }}</span>
               <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-answer" :ref="el => setFaqRef(el, i)">
               <div class="faq-answer-inner">
                 <p>{{ item.answer }}</p>
               </div>

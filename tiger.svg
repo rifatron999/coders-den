@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <!-- Prowling Tiger Silhouette — facing forward-left, stalking pose -->
+  <defs>
+    <linearGradient id="tigerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#B45309" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="tigerBody" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.1"/>
+      <stop offset="40%" stop-color="#D97706" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#92400E" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#D97706" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Body — main torso crouching -->
+  <path d="M380,420 C360,390 340,360 330,330 C320,300 330,275 350,260 
+           C370,245 400,235 440,230 C480,225 530,228 570,235 
+           C610,242 650,255 690,270 C730,285 760,300 790,320 
+           C820,340 845,365 860,390 C875,415 880,440 870,465 
+           C860,490 840,510 810,525 C780,540 745,548 710,550 
+           C675,552 640,548 610,540 C580,532 550,518 520,505 
+           C490,492 460,478 435,462 C410,446 395,438 380,420Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.5" stroke-opacity="0.08"/>
+
+  <!-- Rear haunches -->
+  <path d="M810,525 C830,510 855,500 870,480 
+           C885,460 895,440 900,415 C905,390 900,370 890,355 
+           C880,340 865,332 850,330 C835,328 820,335 808,348 
+           C796,361 790,380 790,400 C790,420 795,445 800,465 
+           C805,485 810,505 810,525Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.06"/>
+
+  <!-- Rear leg back -->
+  <path d="M850,465 C855,490 858,520 855,548 
+           C852,576 845,600 838,625 C831,650 828,668 830,680 
+           C832,692 838,698 848,695 C858,692 862,682 860,668 
+           C858,654 852,640 855,618 C858,596 868,572 872,545 
+           C876,518 870,492 860,470Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.06"/>
+
+  <!-- Rear leg front -->
+  <path d="M790,520 C788,545 782,572 775,598 
+           C768,624 762,648 760,665 C758,682 762,692 770,695 
+           C778,698 784,690 786,678 C788,666 785,650 790,628 
+           C795,606 805,580 808,555 C811,530 805,510 798,500Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.06"/>
+
+  <!-- Front right leg -->
+  <path d="M440,460 C435,485 428,512 422,540 
+           C416,568 412,595 410,618 C408,641 412,658 418,668 
+           C424,678 432,680 438,675 C444,670 446,660 444,645 
+           C442,630 436,612 435,590 C434,568 438,545 442,520 
+           C446,495 448,475 445,462Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.06"/>
+
+  <!-- Front left leg (forward, stalking) -->
+  <path d="M490,480 C482,500 470,525 458,550 
+           C446,575 435,598 428,620 C421,642 420,658 425,670 
+           C430,682 438,685 446,680 C454,675 458,665 456,648 
+           C454,631 448,612 450,588 C452,564 462,538 472,515 
+           C482,492 488,478 490,470Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.06"/>
+
+  <!-- Head shape -->
+  <path d="M330,330 C318,310 308,288 305,268 
+           C302,248 308,230 320,218 C332,206 348,200 368,198 
+           C388,196 408,200 425,210 C442,220 452,235 458,252 
+           C464,269 462,288 455,305 C448,322 438,335 425,345 
+           C412,355 395,360 378,358 C361,356 345,348 330,330Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.5" stroke-opacity="0.1"/>
+
+  <!-- Left ear -->
+  <path d="M320,218 C312,198 308,178 315,162 
+           C322,146 335,140 345,148 C355,156 358,172 352,190 
+           C346,208 338,218 330,222Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.08"/>
+
+  <!-- Right ear -->
+  <path d="M410,202 C418,182 428,168 438,160 
+           C448,152 458,155 462,168 C466,181 460,198 450,212 
+           C440,226 430,230 422,218Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.4" stroke-opacity="0.08"/>
+
+  <!-- Muzzle / snout -->
+  <path d="M340,320 C335,330 332,340 335,348 
+           C338,356 345,360 355,358 C365,356 375,352 385,350 
+           C395,348 402,352 405,348 C408,344 406,336 400,328 
+           C394,320 385,315 375,318 C365,321 352,325 340,320Z"
+        fill="url(#tigerBody)" stroke="#D97706" stroke-width="0.3" stroke-opacity="0.08"/>
+
+  <!-- Nose -->
+  <ellipse cx="370" cy="338" rx="10" ry="7" fill="#D97706" opacity="0.08"/>
+
+  <!-- Left eye -->
+  <ellipse cx="342" cy="272" rx="14" ry="9" fill="url(#eyeGlow)"/>
+  <ellipse cx="342" cy="272" rx="3" ry="8" fill="#0A0A0B" opacity="0.4"/>
+
+  <!-- Right eye -->
+  <ellipse cx="410" cy="268" rx="14" ry="9" fill="url(#eyeGlow)"/>
+  <ellipse cx="410" cy="268" rx="3" ry="8" fill="#0A0A0B" opacity="0.4"/>
+
+  <!-- Tail -->
+  <path d="M900,415 C920,400 945,385 965,378 
+           C985,371 1005,372 1020,380 C1035,388 1042,402 1040,418 
+           C1038,434 1028,448 1015,455 C1002,462 988,460 978,450 
+           C968,440 962,425 958,415 C954,405 948,400 940,402"
+        fill="none" stroke="#D97706" stroke-width="8" stroke-opacity="0.06" stroke-linecap="round"/>
+  <!-- Tail tip -->
+  <path d="M1015,455 C1025,465 1040,472 1055,470 
+           C1070,468 1080,458 1082,445"
+        fill="none" stroke="#D97706" stroke-width="6" stroke-opacity="0.05" stroke-linecap="round"/>
+
+  <!-- Tiger body stripes -->
+  <path d="M420,250 C435,270 445,290 448,310" fill="none" stroke="#D97706" stroke-width="3" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M470,248 C478,268 482,290 480,312" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.05" stroke-linecap="round"/>
+  <path d="M520,252 C525,275 522,298 518,320" fill="none" stroke="#D97706" stroke-width="3" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M565,262 C568,285 565,310 558,332" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.05" stroke-linecap="round"/>
+  <path d="M610,275 C612,298 608,322 600,345" fill="none" stroke="#D97706" stroke-width="3" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M655,290 C655,315 650,340 640,362" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.05" stroke-linecap="round"/>
+  <path d="M700,308 C698,332 692,358 682,380" fill="none" stroke="#D97706" stroke-width="3" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M740,325 C738,350 732,378 722,400" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.05" stroke-linecap="round"/>
+  <path d="M780,345 C778,370 772,398 762,422" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.05" stroke-linecap="round"/>
+  <path d="M820,370 C818,395 812,420 802,442" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.04" stroke-linecap="round"/>
+
+  <!-- Head stripes -->
+  <path d="M335,225 C340,240 342,255 338,268" fill="none" stroke="#D97706" stroke-width="2" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M355,215 C358,232 358,250 352,265" fill="none" stroke="#D97706" stroke-width="2" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M395,212 C398,230 400,248 398,265" fill="none" stroke="#D97706" stroke-width="2" stroke-opacity="0.06" stroke-linecap="round"/>
+  <path d="M418,218 C420,235 418,252 414,268" fill="none" stroke="#D97706" stroke-width="2" stroke-opacity="0.06" stroke-linecap="round"/>
+
+  <!-- Whiskers -->
+  <line x1="340" y1="340" x2="290" y2="332" stroke="#D97706" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="338" y1="348" x2="285" y2="348" stroke="#D97706" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="340" y1="355" x2="292" y2="365" stroke="#D97706" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="402" y1="338" x2="452" y2="328" stroke="#D97706" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="404" y1="346" x2="458" y2="344" stroke="#D97706" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="402" y1="354" x2="455" y2="362" stroke="#D97706" stroke-width="1" stroke-opacity="0.06"/>
+
+  <!-- Ambient glow behind tiger -->
+  <ellipse cx="600" cy="420" rx="350" ry="200" fill="url(#tigerGlow)" opacity="0.5"/>
+</svg>
